@@ -15,7 +15,7 @@ let maxNumber = 0;
 let counter = 0;
 let scale = 0;
 let synth = new Tone.Synth().toMaster();
-synth.volume.value = -15;
+synth.volume.value = -20;
 
 function setup() {
   canvas.width = width;
