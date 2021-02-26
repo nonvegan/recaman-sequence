@@ -16,7 +16,6 @@ let counter = 0;
 let scale = 0;
 let synth = new Tone.Synth().toMaster();
 synth.volume.value = -15;
-console.log(synth.oscillator.type="sine");
 
 function setup() {
   canvas.width = width;
@@ -29,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-  let note = (number % 22) + 22;
+  let note = (number % 33) + 22;
   let freq = Math.pow(2, (note - 49) / 12) * 440;
   synth.triggerAttackRelease(freq, "8n");
   ctx.save();
