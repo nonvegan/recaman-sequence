@@ -1,4 +1,4 @@
-class RacamanArc {
+class RecamanArc {
   constructor(current, next, counter) {
     this.current = current;
     this.next = next;
@@ -12,4 +12,4 @@ class RacamanArc {
   }
 }
 
-export { RacamanArc };
+export { RecamanArc };

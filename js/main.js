@@ -1,5 +1,5 @@
 import { getMs, lerp } from "./helpers.js";
-import { RacamanArc } from "./classes.js";
+import { RecamanArc } from "./classes.js";
 
 const canvas = document.getElementById("canvas");
 /** @type {CanvasRenderingContext2D} */ const ctx = canvas.getContext("2d");
@@ -39,7 +39,7 @@ function update() {
   if (next < 0 || sequenceAssist[next]) {
     next = number + counter;
   }
-  sequence.push(new RacamanArc(number, next, counter));
+  sequence.push(new RecamanArc(number, next, counter));
   sequenceAssist[next] = true;
   number = next;
   if (number > maxNumber) maxNumber = number;
