@@ -16,6 +16,7 @@ let counter = 0;
 let scale = 0;
 let synth = new Tone.Synth().toMaster();
 synth.volume.value = -20;
+console.log(synth.oscillator.type="sine");
 
 function setup() {
   canvas.width = width;
