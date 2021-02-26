@@ -11,9 +11,11 @@ const height = Math.min(window.innerWidth, window.innerHeight) / 1.72;
 let sequence = [];
 let sequenceAssist = [];
 let number = 0;
-let maxNumber = 1;
+let maxNumber = 0;
 let counter = 0;
 let scale = 0;
+let synth = new Tone.Synth().toMaster();
+synth.volume.value = -15;
 
 function setup() {
   canvas.width = width;
@@ -22,18 +24,22 @@ function setup() {
   ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--fuchsia");
   ctx.lineWidth = 0.5;
   resetButton.addEventListener("click", reset);
+  update();
 }
 
 function draw() {
+  let note = (number % 22) + 22;
+  let freq = Math.pow(2, (note - 49) / 12) * 440;
+  synth.triggerAttackRelease(freq, "8n");
   ctx.save();
-  scale = lerp(scale, width / maxNumber, 0.2);
+  scale = lerp(scale, width / maxNumber, 0.5);
   ctx.scale(scale, scale);
   for (const number of sequence) {
     number.draw(ctx);
   }
+
   ctx.restore();
 }
-
 function update() {
   let next = number - counter;
   if (next < 0 || sequenceAssist[next]) {
@@ -66,4 +72,4 @@ setInterval(() => {
   update();
   clear();
   draw();
-}, getMs(30));
+}, getMs(10));
