@@ -19,8 +19,8 @@ function setup() {
   canvas.width = width;
   canvas.height = height;
   ctx.translate(0, height / 2);
-  ctx.lineWidth = 0.5;
   ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--fuchsia");
+  ctx.lineWidth = 0.5;
   resetButton.addEventListener("click", reset);
 }
 
@@ -35,16 +35,13 @@ function draw() {
 }
 
 function update() {
-  let next;
-  if (number - counter < 0 || sequenceAssist[number - counter]) {
+  let next = number - counter;
+  if (next < 0 || sequenceAssist[next]) {
     next = number + counter;
-  } else {
-    next = number - counter;
   }
   sequence.push(new RacamanArc(number, next, counter));
   sequenceAssist[next] = true;
   number = next;
-
   if (number > maxNumber) maxNumber = number;
   counter++;
 }
