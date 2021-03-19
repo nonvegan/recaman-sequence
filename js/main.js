@@ -28,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-  let note = (number % 33) + 22;
+  let note = (number % 33) + 11;
   let freq = Math.pow(2, (note - 49) / 12) * 440;
   synth.triggerAttackRelease(freq, "8n");
   ctx.save();
